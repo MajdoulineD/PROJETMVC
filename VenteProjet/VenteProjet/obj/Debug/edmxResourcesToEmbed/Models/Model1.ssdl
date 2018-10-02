@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="siteventeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="siteventeModelStoreContainer">
+    <EntitySet Name="Article" EntityType="siteventeModel.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categorie" EntityType="siteventeModel.Store.Categorie" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Client" EntityType="siteventeModel.Store.Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Commande" EntityType="siteventeModel.Store.Commande" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="NumArticle" />
+    </Key>
+    <Property Name="NumArticle" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Designation" Type="varchar" MaxLength="150" />
+    <Property Name="PrixU" Type="int" />
+    <Property Name="stock" Type="int" />
+    <Property Name="RefCat" Type="int" />
+    <Property Name="photo" Type="varchar" MaxLength="350" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="RefCat" />
+    </Key>
+    <Property Name="RefCat" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nomcatg" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="NumClient" />
+    </Key>
+    <Property Name="NumClient" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="varchar" MaxLength="100" />
+    <Property Name="MotPasse" Type="varchar" MaxLength="100" />
+    <Property Name="Nom" Type="varchar" MaxLength="100" />
+    <Property Name="Prenom" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Ville" Type="varchar" MaxLength="100" />
+    <Property Name="tel" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="NumCmd" />
+    </Key>
+    <Property Name="NumCmd" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DateCmd" Type="date" />
+    <Property Name="NumClient" Type="int" />
+    <Property Name="NumArticle" Type="int" />
+    <Property Name="QteArticle" Type="int" />
+  </EntityType>
+</Schema>

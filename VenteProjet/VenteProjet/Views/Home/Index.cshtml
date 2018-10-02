@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+                  <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Inscription", "Inscription", "LoginRegister")</li>
+                            <li>@Html.ActionLink("Se Connecter", "Identification", "LoginRegister")</li>
+                        </ul>
+                    </nav>           
+        </div>        
+    </section>
+    
+}
+<img class="backg" src="~/Picture/backg.jpg"/>

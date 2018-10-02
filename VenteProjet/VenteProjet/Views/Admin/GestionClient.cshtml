@@ -1,0 +1,82 @@
+﻿@model IEnumerable<VenteProjet.Models.Client>
+<link href="~/Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#txtSearch').autocomplete({
+                source: '@Url.Action("getClient","Admin")'
+        })
+    })
+</script>
+@{
+    ViewBag.Title = "GestionClient";
+}
+
+<h2>Gestion Des Client</h2>
+<br /> 
+@using (@Html.BeginForm()){
+    <b>Entrez le nom d'un client</b>
+  <b>&nbsp;</b><b>&nbsp;</b>  @Html.TextBox("searchClient", null, new { id= "txtSearch"})
+    <input type="submit" value="Chercher" />
+}
+
+<div style="font-family:Arial">
+<table class="tbl"> 
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotPasse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotPasse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel)
+        </td>
+        <td style="color:red">
+            @Html.ActionLink("Modifier", "Edit", new { id=item.NumClient }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.NumClient })
+        </td>
+    </tr>
+}
+
+</table>
+</div>

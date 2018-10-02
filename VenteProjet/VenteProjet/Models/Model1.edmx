@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="siteventeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="siteventeModelStoreContainer">
+          <EntitySet Name="Article" EntityType="siteventeModel.Store.Article" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categorie" EntityType="siteventeModel.Store.Categorie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Client" EntityType="siteventeModel.Store.Client" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Commande" EntityType="siteventeModel.Store.Commande" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="NumArticle" />
+          </Key>
+          <Property Name="NumArticle" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Designation" Type="varchar" MaxLength="150" />
+          <Property Name="PrixU" Type="int" />
+          <Property Name="stock" Type="int" />
+          <Property Name="RefCat" Type="int" />
+          <Property Name="photo" Type="varchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="RefCat" />
+          </Key>
+          <Property Name="RefCat" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nomcatg" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="NumClient" />
+          </Key>
+          <Property Name="NumClient" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="varchar" MaxLength="100" />
+          <Property Name="MotPasse" Type="varchar" MaxLength="100" />
+          <Property Name="Nom" Type="varchar" MaxLength="100" />
+          <Property Name="Prenom" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Ville" Type="varchar" MaxLength="100" />
+          <Property Name="tel" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="NumCmd" />
+          </Key>
+          <Property Name="NumCmd" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateCmd" Type="date" />
+          <Property Name="NumClient" Type="int" />
+          <Property Name="NumArticle" Type="int" />
+          <Property Name="QteArticle" Type="int" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="siteventeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="siteventeEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="siteventeModel.Article" />
+          <EntitySet Name="Categories" EntityType="siteventeModel.Categorie" />
+          <EntitySet Name="Clients" EntityType="siteventeModel.Client" />
+          <EntitySet Name="Commandes" EntityType="siteventeModel.Commande" />
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="NumArticle" />
+          </Key>
+          <Property Name="NumArticle" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Designation" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="PrixU" Type="Int32" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="RefCat" Type="Int32" />
+          <Property Name="photo" Type="String" MaxLength="350" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="RefCat" />
+          </Key>
+          <Property Name="RefCat" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Nomcatg" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="NumClient" />
+          </Key>
+          <Property Name="NumClient" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MotPasse" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Nom" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Prenom" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ville" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="tel" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="NumCmd" />
+          </Key>
+          <Property Name="NumCmd" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCmd" Type="DateTime" Precision="0" />
+          <Property Name="NumClient" Type="Int32" />
+          <Property Name="NumArticle" Type="Int32" />
+          <Property Name="QteArticle" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="siteventeModelStoreContainer" CdmEntityContainer="siteventeEntities">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="siteventeModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="NumArticle" ColumnName="NumArticle" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="PrixU" ColumnName="PrixU" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="RefCat" ColumnName="RefCat" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="siteventeModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="RefCat" ColumnName="RefCat" />
+                <ScalarProperty Name="Nomcatg" ColumnName="Nomcatg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="siteventeModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="MotPasse" ColumnName="MotPasse" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commandes">
+            <EntityTypeMapping TypeName="siteventeModel.Commande">
+              <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="NumCmd" ColumnName="NumCmd" />
+                <ScalarProperty Name="DateCmd" ColumnName="DateCmd" />
+                <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+                <ScalarProperty Name="NumArticle" ColumnName="NumArticle" />
+                <ScalarProperty Name="QteArticle" ColumnName="QteArticle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

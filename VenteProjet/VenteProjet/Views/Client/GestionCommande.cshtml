@@ -1,0 +1,47 @@
+﻿@model IEnumerable<VenteProjet.Models.Article>
+
+@{
+    ViewBag.Title = "GestionCommande";
+}
+
+<h2>Mon Panier</h2>
+
+<p>
+    @Html.ActionLink("Ajouter un nouveau produit au panier", "ajoutProduit")
+</p>
+<table class="tbl4">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefCat)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixU)
+        </td>
+        <td>
+            <img src='~/Picture/@Html.ValueFor(modelItem => item.photo)'  height="90" width="100"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefCat)
+        </td>
+                      
+    </tr>
+}
+
+</table>

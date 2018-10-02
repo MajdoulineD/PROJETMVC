@@ -1,0 +1,25 @@
+﻿@model VenteProjet.Models.Categorie
+
+@{
+    ViewBag.Title = "DeleteCateg";
+}
+
+<h2>Êtes-vous sûr de vouloir supprimer cette catégorie ?</h2>
+<br />
+<fieldset>
+    <legend>Categorie</legend>
+
+   
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nomcatg)
+    <b> :
+        @Html.DisplayFor(model => model.Nomcatg) </b>
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Supprimer" /> 
+    </p>
+}

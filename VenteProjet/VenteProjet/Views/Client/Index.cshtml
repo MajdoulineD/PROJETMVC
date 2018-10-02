@@ -1,0 +1,23 @@
+﻿@model VenteProjet.Models.Client
+
+@{
+    ViewBag.Title = "Index";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+                  <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Déconnexion", "Deconnexion", "LoginRegister")</li>
+                        </ul>
+                    </nav>
+           
+        </div>
+    </section> 
+}
+<h2>Bienvenue @Session["Nom"].ToString() @Session["Prenom"].ToString()</h2>
+<ul id="OptionClient">
+    <li>@Html.ActionLink("Consulter les catalogues", "GestionCatalog", "Client")</li>
+    <li>@Html.ActionLink("Visualiser Votre panier", "GestionCommande", "Client")</li>
+    <li>@Html.ActionLink("Lancer des commandes", "LancerCommande", "Client")</li>
+</ul>

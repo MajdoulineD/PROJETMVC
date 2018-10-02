@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="siteventeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="siteventeEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Articles" EntityType="siteventeModel.Article" />
+    <EntitySet Name="Categories" EntityType="siteventeModel.Categorie" />
+    <EntitySet Name="Clients" EntityType="siteventeModel.Client" />
+    <EntitySet Name="Commandes" EntityType="siteventeModel.Commande" />
+  </EntityContainer>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="NumArticle" />
+    </Key>
+    <Property Name="NumArticle" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Designation" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="PrixU" Type="Int32" />
+    <Property Name="stock" Type="Int32" />
+    <Property Name="RefCat" Type="Int32" />
+    <Property Name="photo" Type="String" MaxLength="350" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="RefCat" />
+    </Key>
+    <Property Name="RefCat" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Nomcatg" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="NumClient" />
+    </Key>
+    <Property Name="NumClient" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="MotPasse" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Nom" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Prenom" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Ville" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="tel" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="NumCmd" />
+    </Key>
+    <Property Name="NumCmd" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DateCmd" Type="DateTime" Precision="0" />
+    <Property Name="NumClient" Type="Int32" />
+    <Property Name="NumArticle" Type="Int32" />
+    <Property Name="QteArticle" Type="Int32" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<VenteProjet.Models.Article>
+
+@{
+    ViewBag.Title = "GestionArticle";
+}
+
+<h2>GestionArticle</h2>
+
+<b>
+    @using (Html.BeginForm()) { 
+            <b>Entrez une désignation</b> <b>&nbsp;</b><b>&nbsp;</b><b>&nbsp;</b> @Html.TextBox("artList", null, new { id= "artSearch"})
+
+            <input type="submit" value="Chercher" /> 
+
+    }
+</b>
+
+<table class="tbl2">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefCat) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo) 
+        </th>
+        <th>
+           
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefCat)
+        </td>
+        <td>
+@*            @Html.DisplayFor(modelItem => item.photo)*@
+            <img src='~/Picture/@Html.ValueFor(modelItem => item.photo)'  height="200" width="200"/>
+           @* @{
+                   var base64 = Convert.ToBase64String(item.photo);
+                   var imgsrc = string.Format("data:image/gif;base64,{0}",base64);
+                   
+                }
+            <img src='@imgsrc' />*@
+
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "EditArticle", new { id=item.NumArticle }) |
+            @Html.ActionLink("Supprimer", "DeleteArticle", new { id=item.NumArticle }) |
+            @Html.ActionLink("Nouveau", "CreateArticle", new { id=item.NumArticle }) 
+        </td>
+    </tr>
+}
+
+</table>

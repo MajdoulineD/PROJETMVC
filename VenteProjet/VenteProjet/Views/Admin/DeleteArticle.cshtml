@@ -1,0 +1,26 @@
+﻿@model VenteProjet.Models.Article
+
+@{
+    ViewBag.Title = "DeleteArticle";
+}
+
+<h2>DeleteArticle</h2>
+
+<h2>Êtes-vous sûr de vouloir supprimer cet article ?</h2>
+<fieldset>
+    <legend>Article</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Designation)
+    <b> :
+        @Html.DisplayFor(model => model.Designation) </b>
+    </div>
+
+    
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Supprimer" /> 
+    </p>
+}

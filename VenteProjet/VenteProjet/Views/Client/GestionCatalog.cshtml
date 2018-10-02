@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VenteProjet.Models.Article>
+
+@{
+    ViewBag.Title = "GestionCatalog";
+}
+
+<h2>Consulter les catalogues</h2>
+
+
+<table class="tbl3">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        
+        <td>
+            <img src='~/Picture/@Html.ValueFor(modelItem => item.photo)'  height="90" width="100"/>
+        </td>
+        
+    </tr>
+}
+
+</table>

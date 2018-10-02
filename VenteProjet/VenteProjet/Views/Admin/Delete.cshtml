@@ -1,0 +1,33 @@
+﻿@model VenteProjet.Models.Client
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Êtes-vous sûr de vouloir supprimer ce client ?</h2>
+
+<h3></h3>
+<fieldset>
+    <legend>Client</legend>
+
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nom)
+  
+       <b> : @Html.DisplayFor(model => model.Nom)</b>
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Prenom)
+    
+    <b> :   @Html.DisplayFor(model => model.Prenom)</b>
+    </div>
+
+    
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Supprimer" /> 
+    </p>
+}
